@@ -1,0 +1,17 @@
+Django
+djangorestframework
+django-crispy-forms
+django-environ
+django-filter
+django-widget-tweaks
+dj-database-url
+django-environ
+crispy-bootstrap5
+Pillow
+psycopg2
+psycopg2-binary
+python-dateutil
+pytz
+PyYAML
+sqlparse
+requests
