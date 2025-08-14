@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.manifest
+*.spec
+# Django
+*.log
+db.sqlite3
+media/
+staticfiles/
+.vscode/
+Thumbs.db
+Desktop.ini
+.env
+venv/
+ENV/
+.env.*
+# Migrations
+**/migrations/*.pyc
+**/migrations/*.pyo
+**/migrations/*.py
+!**/migrations/__init__.py
+

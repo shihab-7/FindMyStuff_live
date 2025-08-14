@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h2>Available Items to Claim ({{ unclaimed_items.count }})</h2>
+    
+    {% if unclaimed_items %}
+        <div class="grid">
+            {% for item in unclaimed_items %}
+            <div class="card card-unclaimed"  style="
+    background: linear-gradient(145deg, #d4fe2bce, #f3bfbfff);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 4px 4px 10px rgba(45, 26, 217, 0.1), 
+                -0px -0px 15px rgba(62, 5, 250, 1);">
+                <h3>{{ item.item_name }}</h3>
+                <p><strong>Posted:</strong> {{ item.date_registered|date:"M d, Y" }}</p>
+                <p><strong>Status:</strong> <span style="color: #28a745;">{{ item.status }}</span></p>
+                <a href="{% url 'claim_item' item.id %}" class="btn btn-success"> Claim This Item</a>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            <p style="margin: 0;">Oops! Unclaimed items are not available currently.</p>
+        </div>
+    {% endif %}
+
+    <h2>Recently Claimed Items ({{ claimed_items.count }})</h2>
+    <p style="color: antiquewhite; margin-bottom: 20px;">These items have been claimed. You can report issues if needed.</p>
+
+    {% if claimed_items %}
+        <div style="display: grid; gap: 20px;">
+            {% for item in claimed_items %}
+            <div class="card card-resolved" style="
+    background: linear-gradient(145deg, #d4fe2bce, #f3bfbfff);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 4px 4px 10px rgba(45, 26, 217, 0.1), 
+                -0px -0px 15px rgba(62, 5, 250, 1);">
+                <h3>{{ item.item_name }}</h3>
+                <p><strong>Description:</strong> {{ item.description|default:"No description provided" }}</p>
+                <p><strong>Posted:</strong> {{ item.date_registered|date:"M d, Y" }}</p>
+                <p><strong>Status:</strong> <span style="color: #4b0358ff;">{{ item.status }}</span></p>
+                <button onclick="window.location.href='{% url 'report_issue' item.id %}'" style="margin-left: 10px; background: #de0828ff; color: white; padding: 8.5px 24px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Report Issue</button>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No claimed items to display.</p>
+    {% endif %}
+{% endblock %}
