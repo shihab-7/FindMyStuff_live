@@ -33,7 +33,7 @@ SECRET_KEY = env('DJANGO_SECRET_KEY', default='unsafe-default-key')
 DEBUG = env('DJANGO_DEBUG', default='True') == 'True'
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://*.127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://findmystuff.onrender.com','https://*.127.0.0.1']
 
 
 # Application definition
